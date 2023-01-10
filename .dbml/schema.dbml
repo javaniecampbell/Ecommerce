@@ -1,0 +1,34 @@
+table Products {
+  Id int [pk]
+  Name varchar(500)
+  Price decimal(18,2)
+}
+
+
+table Customers {
+  Id int [pk]
+  FirstName varchar(500)
+  LastName varchar(500)
+  Address varchar(800)
+  Phone varchar(18)
+}
+
+
+table Orders {
+  Id int [pk]
+  CustomerId int [not null]
+  OrderPlacedOn datetime
+  OrderFulfilledOn datetime
+}
+
+
+table OrderDetails {
+  Id int [pk]
+  Quantity int
+  ProductId int [not null]
+  OrderId int [not null]
+}
+
+Ref: Customers.Id < Orders.CustomerId
+Ref: Orders.Id < OrderDetails.OrderId
+Ref: Products.Id < OrderDetails.ProductId
