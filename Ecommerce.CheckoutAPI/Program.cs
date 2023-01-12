@@ -14,7 +14,8 @@ namespace Ecommerce.CheckoutAPI
             builder.Services.AddControllers();
             builder.Services.AddDbContext<CheckoutDbContext>(options =>
             {
-                options.UseSqlServer("Server=localhost,1433;Database=CheckoutDb;User Id=sa;Password=PMS@tr3d;Trusted_Connection=False;TrustServerCertificate=true");
+                //options.UseSqlServer("Server=localhost,1433;Database=CheckoutDb;User Id=sa;Password=PMS@tr3d;Trusted_Connection=False;TrustServerCertificate=true");
+                options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
             });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
